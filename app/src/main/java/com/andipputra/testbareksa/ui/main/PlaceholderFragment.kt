@@ -51,22 +51,35 @@ class PlaceholderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val bni = ArrayList<Entry>()
-        bni.add(Entry(0F, 149F))
-        bni.add(Entry(1F, 113F))
-        bni.add(Entry(2F, 196F))
-        bni.add(Entry(3F, 106F))
-        bni.add(Entry(4F, 181F))
-        bni.add(Entry(5F, 218F))
-        bni.add(Entry(6F, 247F))
-        bni.add(Entry(7F, 218F))
-        bni.add(Entry(8F, 337F))
-        bni.add(Entry(9F, 219F))
-
+        for(i in 0..12){
+            bni.add(Entry(i.toFloat(), (i*3).toFloat()))
+        }
         val bniLineDataSet = LineDataSet(bni, "BNI")
         bniLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
         bniLineDataSet.color = Color.BLUE
         bniLineDataSet.circleRadius = 5f
         bniLineDataSet.setCircleColor(Color.BLUE)
+
+        val cipta = ArrayList<Entry>()
+        for(i in 0..12){
+            cipta.add(Entry(i.toFloat(), (i*2).toFloat()))
+        }
+        val ciptaLineDataSet = LineDataSet(cipta, "Cipta")
+        ciptaLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+        ciptaLineDataSet.color = Color.MAGENTA
+        ciptaLineDataSet.circleRadius = 5f
+        ciptaLineDataSet.setCircleColor(Color.MAGENTA)
+
+        val ascend = ArrayList<Entry>()
+        for(i in 0..12){
+            ascend.add(Entry(i.toFloat(), (i*1).toFloat()))
+        }
+        val ascendLineDataSet = LineDataSet(ascend, "Ascend")
+        ascendLineDataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
+        ascendLineDataSet.color = Color.GREEN
+        ascendLineDataSet.circleRadius = 5f
+        ascendLineDataSet.setCircleColor(Color.GREEN)
+
 
         //Setup Legend
         val lineChart = binding.chart
@@ -80,7 +93,7 @@ class PlaceholderFragment : Fragment() {
 
         lineChart.description.isEnabled = false
         lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-        lineChart.data = LineData(bniLineDataSet)
+        lineChart.data = LineData(bniLineDataSet, ciptaLineDataSet, ascendLineDataSet)
         lineChart.animateXY(100, 500)
     }
 
