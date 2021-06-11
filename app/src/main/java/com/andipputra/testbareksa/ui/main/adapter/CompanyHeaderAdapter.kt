@@ -4,13 +4,13 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.andipputra.testbareksa.data.ManagerInvestasi
+import com.andipputra.testbareksa.data.HeaderItemCompany
 import com.andipputra.testbareksa.databinding.HeaderCompanyItemBinding
 
-class CompanyHeaderAdapter(val listHeader: MutableList<ManagerInvestasi> = mutableListOf()) :
+class CompanyHeaderAdapter(private val listHeader: MutableList<HeaderItemCompany> = mutableListOf()) :
     RecyclerView.Adapter<CompanyHeaderAdapter.ViewHolder>() {
 
-    fun updateList(newList: List<ManagerInvestasi>) {
+    fun updateList(newList: List<HeaderItemCompany>) {
         listHeader.clear()
         listHeader.addAll(newList)
         notifyDataSetChanged()
@@ -19,16 +19,24 @@ class CompanyHeaderAdapter(val listHeader: MutableList<ManagerInvestasi> = mutab
     class ViewHolder(private val binding: HeaderCompanyItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(managerInvestasi: ManagerInvestasi, position: Int) {
-            if (position/2 == 1){
-                binding.cardHeaderCompany.setBackgroundColor(Color.parseColor("#FFE0DBEB"))
+        fun bind(headerItem: HeaderItemCompany, position: Int) {
+            when (position) {
+                0 -> {
+                    binding.cardHeaderCompany.setBackgroundColor(Color.parseColor("#FFE2EBDD"))
+                }
+                1 -> {
+                    binding.cardHeaderCompany.setBackgroundColor(Color.parseColor("#FFE0DBEB"))
+                }
+                else -> {
+                    binding.cardHeaderCompany.setBackgroundColor(Color.parseColor("#FFE0E8EE"))
+                }
             }
 
             val imageView = binding.companyLogo
-            imageView.setImageResource(managerInvestasi.logo)
+            imageView.setImageResource(headerItem.logo)
 
             val companyName = binding.companyName
-            companyName.text = managerInvestasi.name
+            companyName.text = headerItem.name
         }
 
     }

@@ -1,57 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.main.main.PlaceholderFragment">
 
-    <androidx.viewpager2.widget.ViewPager2
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/chartViewPager"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="200dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        android:layout_height="wrap_content">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/time_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:theme="@style/Theme.TestBareksa.TabLayout"
-        app:layout_constraintTop_toBottomOf="@id/chartViewPager" />
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/chartViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="200dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/layout_comparation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:padding="@dimen/padding_main_content"
-        android:background="@color/background"
-        app:layout_constraintTop_toBottomOf="@id/time_tabs">
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/time_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:theme="@style/Theme.TestBareksa.TabLayout"
+            app:layout_constraintTop_toBottomOf="@id/chartViewPager" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/header_company_rv"
-            tools:itemCount="3"
-            app:spanCount="3"
-            tools:listitem="@layout/header_company_item"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:id="@+id/layout_comparation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@color/background"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_main_content"
+            app:layout_constraintTop_toBottomOf="@id/time_tabs">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/detail_company_rv"
-            tools:itemCount="10"
-            tools:listitem="@layout/company_item"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/header_company_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:itemCount="3"
+                tools:listitem="@layout/header_company_item" />
 
-    </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/detail_company_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isScrollContainer="false"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="10"
+                tools:listitem="@layout/company_item" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/button_company_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:nestedScrollingEnabled="false"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="3"
+                tools:itemCount="3"
+                tools:listitem="@layout/button_company_item" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

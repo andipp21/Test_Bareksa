@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.andipputra.testbareksa.R
 import com.andipputra.testbareksa.databinding.FragmentMainBinding
+import com.andipputra.testbareksa.ui.main.adapter.CompanyButtonAdapter
 import com.andipputra.testbareksa.ui.main.adapter.CompanyHeaderAdapter
+import com.andipputra.testbareksa.ui.main.adapter.CompanyItemAdapter
 import com.andipputra.testbareksa.ui.main.adapter.TimePagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -32,6 +34,12 @@ class PlaceholderFragment : Fragment() {
 
     private var _companyHeaderAdapter: CompanyHeaderAdapter? = null
     private val companyHeaderAdapter get() = _companyHeaderAdapter!!
+
+    private var _companyItemAdapater: CompanyItemAdapter? = null
+    private val companyItemAdapter get() = _companyItemAdapater!!
+
+    private var _companyButtonAdapter: CompanyButtonAdapter? = null
+    private val companyButtonAdapter get() = _companyButtonAdapter!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +66,9 @@ class PlaceholderFragment : Fragment() {
         }.attach()
 
         _companyHeaderAdapter = CompanyHeaderAdapter()
+        _companyItemAdapater = CompanyItemAdapter()
+        _companyButtonAdapter = CompanyButtonAdapter(3)
+
 
         pageViewModel.setDataComparasion()
 
@@ -68,14 +79,18 @@ class PlaceholderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
-//        companyHeaderAdapter.updateList(listManajerInvestasi)
-
-        pageViewModel.listManagerInvestasi.observe(viewLifecycleOwner, {
+        pageViewModel.listCompanyHeader.observe(viewLifecycleOwner, {
             companyHeaderAdapter.updateList(it)
+
+        })
+
+        pageViewModel.listCompanyDetail.observe(viewLifecycleOwner, {
+            companyItemAdapter.updateList(it)
         })
 
         binding.headerCompanyRv.adapter = companyHeaderAdapter
+        binding.detailCompanyRv.adapter = companyItemAdapter
+        binding.buttonCompanyRv.adapter = companyButtonAdapter
     }
 
     companion object {
@@ -86,5 +101,7 @@ class PlaceholderFragment : Fragment() {
         super.onDestroyView()
         _binding = null
         _companyHeaderAdapter = null
+        _companyItemAdapater = null
+        _companyButtonAdapter = null
     }
 }
