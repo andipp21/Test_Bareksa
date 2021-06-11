@@ -5,4 +5,12 @@
     <dimen name="appbar_padding">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="padding_content_text">10dp</dimen>
+    <dimen name="padding_header_company">12dp</dimen>
+    <dimen name="padding_detail_company">8dp</dimen>
+    <dimen name="padding_main_content">16dp</dimen>
+    <dimen name="margin_top_company_item">24dp</dimen>
+    <dimen name="span_horizontal_recyclerview">12dp</dimen>
+    <dimen name="margin_horizontal_company_item">6dp</dimen>
+    <dimen name="padding_content_compare">10dp</dimen>
 </resources>

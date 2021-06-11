@@ -5,9 +5,9 @@ data class ManagerInvestasi(
     val name: String,
     val jenisReksaDana: String,
     val imbalHasil: String,
-    val danaKelolaan: Int,
-    val minPembelian: Int,
-    val jangkaWaktu: Int,
+    val danaKelolaan: String,
+    val minPembelian: String,
+    val jangkaWaktu: String,
     val tingkatRisiko: String,
     val peluncuran: String
 )

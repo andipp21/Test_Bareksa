@@ -2,4 +2,14 @@
     <string name="app_name">Test Bareksa</string>
     <string name="tab_imbal_hasil">Imbal Hasil</string>
     <string name="tab_dana_kelola">Dana Kelola</string>
+    <string name="company_logo">Company Logo</string>
+    <string name="one_week">1W</string>
+    <string name="one_month">1M</string>
+    <string name="one_year">1Y</string>
+    <string name="third_year">3Y</string>
+    <string name="five_year">5Y</string>
+    <string name="ten_year">10Y</string>
+    <string name="all">All</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
